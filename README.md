@@ -33,13 +33,15 @@ npx skills add stevenrabulan/mattpocock-skills-addons
 | `implement-tickets` | Works through every open `ready-for-agent` ticket unattended: one subagent per ticket runs `/implement`, then the work is checked and committed. Decisions are logged to one review-notes file. An optional `USAGE_GATE_CMD` can stop the run between tickets. | `implement`, `tdd`, `code-review`, and the `docs/agents/` issue-tracker docs from `setup-matt-pocock-skills` |
 | `silent-consent` | Switches a numbered-question session (`grilling`, `triage`, a spec interview) to silent consent: a question you don't answer is settled at the agent's recommendation, as long as you answer at least one in the round. Every round ends with a reminder, and every assumed answer is echoed. | `grilling`, or any skill that asks numbered questions with recommendations |
 
-`silent-consent` deliberately overrides `grilling`'s default, where a skipped question stays open.
+`silent-consent` deliberately overrides `grilling`'s default, where a skipped question stays open. It isn't redundant with `grilling`'s "nothing left silently assumed": that line tells the agent when the session is done, and says nothing about what your silence means.
 
 Both skills set `disable-model-invocation: true`, so they run only when you type them.
 
 ## Scope
 
 A skill belongs here only if it calls one of Matt's skills or changes how one of them runs. Standalone skills go elsewhere. Matt's skills are never copied or vendored here: they are declared as prerequisites.
+
+These skills live in their own repo because the `skills` CLI has no category or group flag. A dedicated repo is the only way to install exactly the add-ons with one command.
 
 ## Developing
 
